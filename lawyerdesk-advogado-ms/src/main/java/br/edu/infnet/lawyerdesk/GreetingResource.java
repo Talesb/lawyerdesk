@@ -1,4 +1,4 @@
-package br.edu.infnet.talesb;
+package br.edu.infnet.lawyerdesk;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
