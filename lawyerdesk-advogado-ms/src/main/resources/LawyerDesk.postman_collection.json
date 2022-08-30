@@ -1,0 +1,343 @@
+{
+	"info": {
+		"_postman_id": "d5c30ce1-4c2c-42db-8388-aeeb67a8f79a",
+		"name": "LawyerDesk",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "advogado-ms",
+			"item": [
+				{
+					"name": "advogado",
+					"item": [
+						{
+							"name": "Get All",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{advogado-path}}",
+									"host": [
+										"{{advogado-path}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "New",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n        \"nome\": \"Tales Batista 2\",\n        \"cpf\": \"24369245893 2\",\n        \"oab\": \"268598 2\",\n        \"usuario\": {\n            \"id\": 1,\n            \"login\": \"talesb_adv_2\",\n            \"senha\": \"12345\",\n            \"roles\": [\n                {\n                    \"id\": 1\n                }\n            ]\n        },\n        \"especialidades\": [\n            {\n                \"id\": 2\n            }\n        ]\n    }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{advogado-path}}",
+									"host": [
+										"{{advogado-path}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "{{advogado-path}}",
+									"host": [
+										"{{advogado-path}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{advogado-path}}",
+									"host": [
+										"{{advogado-path}}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "especialidade",
+					"item": [
+						{
+							"name": "Delete",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{especialidade-path}}",
+									"host": [
+										"{{especialidade-path}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get All",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{especialidade-path}}",
+									"host": [
+										"{{especialidade-path}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "New",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{especialidade-path}}",
+									"host": [
+										"{{especialidade-path}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "{{especialidade-path}}",
+									"host": [
+										"{{especialidade-path}}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "role",
+					"item": [
+						{
+							"name": "Delete",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{role-path}}",
+									"host": [
+										"{{role-path}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get All",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{role-path}}",
+									"host": [
+										"{{role-path}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "New",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{role-path}}",
+									"host": [
+										"{{role-path}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "{{role-path}}",
+									"host": [
+										"{{role-path}}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "usuario",
+					"item": [
+						{
+							"name": "New",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{usuario-path}}",
+									"host": [
+										"{{usuario-path}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get All",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{usuario-path}}",
+									"host": [
+										"{{usuario-path}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"login\": \"talesb_adv_4\",\n    \"senha\": \"123454\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{usuario-path}}/4",
+									"host": [
+										"{{usuario-path}}"
+									],
+									"path": [
+										"4"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{usuario-path}}/4",
+									"host": [
+										"{{usuario-path}}"
+									],
+									"path": [
+										"4"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "administrador",
+					"item": [
+						{
+							"name": "Delete",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{administrador-path}}",
+									"host": [
+										"{{administrador-path}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get All",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{administrador-path}}",
+									"host": [
+										"{{administrador-path}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "New",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{administrador-path}}",
+									"host": [
+										"{{administrador-path}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "{{administrador-path}}",
+									"host": [
+										"{{administrador-path}}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}
