@@ -2,6 +2,7 @@ package br.edu.infnet.lawyerdesk.resource;
 
 import java.util.List;
 
+import javax.annotation.security.RolesAllowed;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -26,17 +27,20 @@ public class AdministradorResource {
 	@Inject
 	private AdministradorService administradorService;
 
+	@RolesAllowed("ADMIN" )
 	@GET
 	public List<Administrador> findAll() {
 		return this.administradorService.findAll();
 	}
 
+	@RolesAllowed("ADMIN" )
 	@POST
 	public Response create(Administrador administrador) {
 		this.administradorService.persist(administrador);
 		return Response.ok(administrador).status(201).build();
 	}
 
+	@RolesAllowed("ADMIN" )
 	@PUT
 	@Path("{id}")
 	public Response update(@PathParam("id") Long id, Administrador administradorParam) {
@@ -50,6 +54,7 @@ public class AdministradorResource {
 		return Response.ok(administrador).build();
 	}
 
+	@RolesAllowed("ADMIN" )
 	@DELETE
 	@Path("{id}")
 	public Response delete(@PathParam("id") Long id) {

@@ -32,4 +32,11 @@ public class Role {
 		this.descricao = descricao;
 	}
 
+	@Override
+	public String toString() {
+		return descricao;
+	}
+	
+	
+
 }

@@ -8,12 +8,16 @@ import javax.inject.Inject;
 import br.edu.infnet.lawyerdesk.model.Advogado;
 import br.edu.infnet.lawyerdesk.model.Usuario;
 import br.edu.infnet.lawyerdesk.repository.UsuarioRepository;
+import br.edu.infnet.lawyerdesk.security.PasswordEncoder;
 
 @RequestScoped
 public class UsuarioService {
 
 	@Inject
 	private UsuarioRepository usuarioRepository;
+	
+	@Inject
+	PasswordEncoder passwordEncoder;
 
 	public List<Usuario> findAll() {
 		return (List<Usuario>) usuarioRepository.findAll();
@@ -31,7 +35,7 @@ public class UsuarioService {
 	public Usuario update(Long id, Usuario usuarioParam) {
 		Usuario usuario = this.usuarioRepository.findById(id).orElse(null);
 		usuario.setLogin(usuarioParam.getLogin());
-		usuario.setSenha(usuarioParam.getSenha());
+		usuario.setSenha(passwordEncoder.encode(usuarioParam.getSenha()));
 		this.usuarioRepository.save(usuario);
 		return usuario;
 	}
@@ -39,6 +43,10 @@ public class UsuarioService {
 	public void deleteById(Long id) {
 		System.out.println(id);
 		this.usuarioRepository.deleteById(id);
+	}
+	
+	public Usuario findByLogin(String login) {
+		return this.usuarioRepository.findByLogin(login).orElse(null);
 	}
 
 }

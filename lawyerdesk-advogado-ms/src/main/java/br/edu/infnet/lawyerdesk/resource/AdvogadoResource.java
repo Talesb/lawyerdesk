@@ -2,6 +2,7 @@ package br.edu.infnet.lawyerdesk.resource;
 
 import java.util.List;
 
+import javax.annotation.security.RolesAllowed;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -19,6 +20,7 @@ import br.edu.infnet.lawyerdesk.model.Advogado;
 import br.edu.infnet.lawyerdesk.service.AdvogadoService;
 
 @Path("/advogado")
+@RolesAllowed("ADMIN" )
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class AdvogadoResource {

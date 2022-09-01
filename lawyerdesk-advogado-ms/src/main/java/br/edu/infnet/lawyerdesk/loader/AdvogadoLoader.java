@@ -18,6 +18,7 @@ import br.edu.infnet.lawyerdesk.repository.AdvogadoRepository;
 import br.edu.infnet.lawyerdesk.repository.EspecialidadeRepository;
 import br.edu.infnet.lawyerdesk.repository.RoleRepository;
 import br.edu.infnet.lawyerdesk.repository.UsuarioRepository;
+import br.edu.infnet.lawyerdesk.security.PasswordEncoder;
 import io.quarkus.runtime.StartupEvent;
 
 @ApplicationScoped
@@ -38,6 +39,9 @@ public class AdvogadoLoader {
 	@Inject
 	private UsuarioRepository usuarioRepository;
 
+	@Inject
+	PasswordEncoder passwordEncoder;
+	
 	private static final Logger LOGGER = Logger.getLogger("AdvogadoLoader");
 
 	void onStart(@Observes StartupEvent ev) {
@@ -45,11 +49,11 @@ public class AdvogadoLoader {
 
 		Usuario usuario = new Usuario();
 		usuario.setLogin("talesb_adv");
-		usuario.setSenha("1234");
+		usuario.setSenha(passwordEncoder.encode("1234"));
 		
 		Usuario usuarioAdmin = new Usuario();
 		usuarioAdmin.setLogin("talesb_adv_admin");
-		usuarioAdmin.setSenha("1234");
+		usuarioAdmin.setSenha(passwordEncoder.encode("12345"));
 		
 //		usuarioRepository.save(usuarioAdmin);
 //		usuarioRepository.save(usuario);
