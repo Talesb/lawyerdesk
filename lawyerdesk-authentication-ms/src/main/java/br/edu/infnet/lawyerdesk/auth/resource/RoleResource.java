@@ -1,4 +1,4 @@
-package br.edu.infnet.lawyerdesk.resource;
+package br.edu.infnet.lawyerdesk.auth.resource;
 
 import java.util.List;
 
@@ -8,7 +8,6 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
-import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -16,8 +15,8 @@ import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import br.edu.infnet.lawyerdesk.model.Role;
-import br.edu.infnet.lawyerdesk.service.RoleService;
+import br.edu.infnet.lawyerdesk.auth.model.Role;
+import br.edu.infnet.lawyerdesk.auth.service.RoleService;
 
 @Path("/role")
 @Produces(MediaType.APPLICATION_JSON)

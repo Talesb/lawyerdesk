@@ -1,4 +1,4 @@
-package br.edu.infnet.lawyerdesk.security;
+package br.edu.infnet.lawyerdesk.auth.security;
 
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;

@@ -1,4 +1,4 @@
-package br.edu.infnet.lawyerdesk.security;
+package br.edu.infnet.lawyerdesk.auth.security;
 
 import java.io.InputStream;
 import java.security.KeyFactory;
@@ -8,7 +8,7 @@ import java.util.Base64;
 import java.util.HashSet;
 import java.util.Set;
 
-import br.edu.infnet.lawyerdesk.model.Role;
+import br.edu.infnet.lawyerdesk.auth.model.Role;
 import io.smallrye.jwt.build.Jwt;
 import io.smallrye.jwt.build.JwtClaimsBuilder;
 

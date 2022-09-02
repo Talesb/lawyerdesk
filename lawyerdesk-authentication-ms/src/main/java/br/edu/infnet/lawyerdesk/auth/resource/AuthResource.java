@@ -1,7 +1,8 @@
-package br.edu.infnet.lawyerdesk.resource;
+package br.edu.infnet.lawyerdesk.auth.resource;
 
 import javax.annotation.security.PermitAll;
 import javax.inject.Inject;
+import javax.transaction.Transactional;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -11,32 +12,30 @@ import javax.ws.rs.core.Response.Status;
 
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 
-import br.edu.infnet.lawyerdesk.model.Usuario;
-import br.edu.infnet.lawyerdesk.model.dto.ResponseDTO;
-import br.edu.infnet.lawyerdesk.model.dto.UsuarioDTO;
-import br.edu.infnet.lawyerdesk.security.PasswordEncoder;
-import br.edu.infnet.lawyerdesk.security.TokenUtils;
-import br.edu.infnet.lawyerdesk.service.UsuarioService;
+import br.edu.infnet.lawyerdesk.auth.model.Usuario;
+import br.edu.infnet.lawyerdesk.auth.model.dto.ResponseDTO;
+import br.edu.infnet.lawyerdesk.auth.model.dto.UsuarioDTO;
+import br.edu.infnet.lawyerdesk.auth.security.PasswordEncoder;
+import br.edu.infnet.lawyerdesk.auth.security.TokenUtils;
 
-@Path("/usuario")
+@Path("/auth")
 public class AuthResource {
 
 	@Inject
 	PasswordEncoder passwordEncoder;
-	
-	@Inject
-	UsuarioService usuarioService;
+ 
 
 	@ConfigProperty(name = "br.edu.infnet.lawyerdesk.jwt.duration") public Long duration;
 	@ConfigProperty(name = "mp.jwt.verify.issuer") public String issuer;
 
 	@PermitAll
 	@POST @Path("/login") @Produces(MediaType.APPLICATION_JSON)
-	public Response login(UsuarioDTO usuarioDto) {
+	@Transactional
+	public Response login(UsuarioDTO dto) {
 		
-		Usuario u = usuarioService.findByLogin(usuarioDto.getLogin());
+		Usuario u = Usuario.findByLogin(dto.getLogin());
 		
-		if (u != null && u.getSenha().equals(passwordEncoder.encode(usuarioDto.getSenha()))) {
+		if (u != null && u.getSenha().equals(passwordEncoder.encode(dto.getSenha()))) {
 			try {
 				return Response.ok(new ResponseDTO(TokenUtils.generateToken(u.getLogin(), u.getRoles(), duration, issuer))).build();
 			} catch (Exception e) {
@@ -46,4 +45,5 @@ public class AuthResource {
 			return Response.status(Status.UNAUTHORIZED).build();
 		}
 	}
+	
 }

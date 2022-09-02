@@ -1,4 +1,4 @@
-package br.edu.infnet.lawyerdesk.resource;
+package br.edu.infnet.lawyerdesk.auth.resource;
 
 import java.util.List;
 
@@ -17,8 +17,8 @@ import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import br.edu.infnet.lawyerdesk.model.Usuario;
-import br.edu.infnet.lawyerdesk.service.UsuarioService;
+import br.edu.infnet.lawyerdesk.auth.model.Usuario;
+import br.edu.infnet.lawyerdesk.auth.service.UsuarioService;
 
 @Path("/usuario")
 @Produces(MediaType.APPLICATION_JSON)

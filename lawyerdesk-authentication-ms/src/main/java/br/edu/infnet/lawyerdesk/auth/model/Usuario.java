@@ -1,4 +1,4 @@
-package br.edu.infnet.lawyerdesk.model;
+package br.edu.infnet.lawyerdesk.auth.model;
 
 import java.util.Set;
 
@@ -7,18 +7,14 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import io.quarkus.hibernate.orm.panache.PanacheEntity;
+
 @Entity
 @Table(name = "LWD_Usuario")
-public class Usuario {
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+public class Usuario extends PanacheEntity {
 
 	private String login;
 	private String senha;
@@ -58,6 +54,8 @@ public class Usuario {
 		this.roles = roles;
 	}
 
-	 
+	public static Usuario findByLogin(String login) {
+		return find("login", login).firstResult();
+	}
 
 }

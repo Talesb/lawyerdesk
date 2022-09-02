@@ -3,6 +3,7 @@ package br.edu.infnet.lawyerdesk.model;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -16,21 +17,20 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "LWD_Advogado")
 public class Advogado {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	private String nome;
 	private String cpf;
 	private String oab;
-	
-	@OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "usuario_id")
-	private Usuario usuario;
-	
+
+	@Column(nullable = false)
+	private int usuarioId;
+
 	@ManyToMany(fetch = FetchType.EAGER)
-	private Set<Especialidade> especialidades;	
+	private Set<Especialidade> especialidades;
 
 	public Long getId() {
 		return id;
@@ -64,12 +64,12 @@ public class Advogado {
 		this.oab = oab;
 	}
 
-	public Usuario getUsuario() {
-		return usuario;
+	public int getUsuarioId() {
+		return usuarioId;
 	}
 
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
+	public void setUsuarioId(int usuarioId) {
+		this.usuarioId = usuarioId;
 	}
 
 	public Set<Especialidade> getEspecialidades() {
@@ -80,8 +80,4 @@ public class Advogado {
 		this.especialidades = especialidades;
 	}
 
-	 
-
-	
-	
 }

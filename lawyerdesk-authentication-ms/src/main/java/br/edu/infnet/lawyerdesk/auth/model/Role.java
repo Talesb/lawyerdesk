@@ -1,19 +1,14 @@
-package br.edu.infnet.lawyerdesk.model;
+package br.edu.infnet.lawyerdesk.auth.model;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.Table;
+
+import io.quarkus.hibernate.orm.panache.PanacheEntity;
 
 @Entity
 @Table(name = "LWD_Role")
-public class Role {
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-	
+public class Role extends PanacheEntity {
+
 	private String descricao;
 
 	public Long getId() {
@@ -36,7 +31,4 @@ public class Role {
 	public String toString() {
 		return descricao;
 	}
-	
-	
-
 }
