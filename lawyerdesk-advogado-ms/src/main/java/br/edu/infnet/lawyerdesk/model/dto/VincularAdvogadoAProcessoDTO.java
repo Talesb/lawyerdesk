@@ -1,4 +1,4 @@
-package br.edu.infnet.lawyerdesk.processoms.dto;
+package br.edu.infnet.lawyerdesk.model.dto;
 
 public class VincularAdvogadoAProcessoDTO {
 
@@ -20,8 +20,8 @@ public class VincularAdvogadoAProcessoDTO {
 	public void setNumProcesso(String numProcesso) {
 		this.numProcesso = numProcesso;
 	}
-
-	 
+ 
+	
 
 	 
 

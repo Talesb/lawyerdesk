@@ -5,12 +5,19 @@ import java.util.List;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 
+import br.edu.infnet.lawyerdesk.client.ProcessoMsClient;
 import br.edu.infnet.lawyerdesk.model.Advogado;
+import br.edu.infnet.lawyerdesk.model.dto.CadastroProcessoDTO;
+import br.edu.infnet.lawyerdesk.model.dto.VincularAdvogadoAProcessoDTO;
 import br.edu.infnet.lawyerdesk.repository.AdvogadoRepository;
 
 @RequestScoped
 public class AdvogadoService {
 
+	@Inject
+	private ProcessoMsClient processoClient;
+	
+	
 	@Inject
 	private AdvogadoRepository advogadoRepository;
 
@@ -38,6 +45,19 @@ public class AdvogadoService {
 
 	public void deleteById(Long id) {
 		this.advogadoRepository.deleteById(id);
+	}
+
+	public void cadastrarProcesso(CadastroProcessoDTO dto) throws Exception {
+
+		Advogado adv = this.advogadoRepository.findByOab(dto.getOab())
+				.orElseThrow(() -> new Exception("Não foi encontrado nenhum adovado com a oab informada"));
+		
+		VincularAdvogadoAProcessoDTO dtoVinculo = new VincularAdvogadoAProcessoDTO();
+		dtoVinculo.setIdAdvogado(adv.getId());
+		dtoVinculo.setNumProcesso(dto.getNumeroProcesso());
+		 
+		this.processoClient.vincularAdvogadoAProcesso(dtoVinculo);
+
 	}
 
 }

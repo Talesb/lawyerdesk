@@ -17,6 +17,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import br.edu.infnet.lawyerdesk.model.Advogado;
+import br.edu.infnet.lawyerdesk.model.dto.CadastroProcessoDTO;
 import br.edu.infnet.lawyerdesk.service.AdvogadoService;
 
 @Path("/advogado")
@@ -63,6 +64,12 @@ public class AdvogadoResource {
 
 		this.advogadoService.deleteById(id);
 		return Response.status(204).build();
+	}
+	
+	
+	@POST
+	public void cadastrarProcesso(CadastroProcessoDTO dto) {
+		this.advogadoService.cadastrarProcesso(dto);
 	}
 
 }
