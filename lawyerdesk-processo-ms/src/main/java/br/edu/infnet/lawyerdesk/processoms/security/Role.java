@@ -10,7 +10,7 @@ public class Role implements GrantedAuthority {
 	}
 
 	public Role(String descricao) {
-		this.descricao = descricao;
+		this.descricao = "ROLE_".concat(descricao);
 	}
 
 	public String getDescricao() {
