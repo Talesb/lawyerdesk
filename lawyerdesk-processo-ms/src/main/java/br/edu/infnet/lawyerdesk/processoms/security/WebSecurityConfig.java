@@ -12,7 +12,7 @@ import br.edu.infnet.lawyerdesk.processoms.filter.JwtAuthenticationFilter;
 
 @Configuration
 @EnableWebSecurity
-@EnableGlobalMethodSecurity(prePostEnabled = true)
+@EnableGlobalMethodSecurity(prePostEnabled = true, proxyTargetClass = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	private final JwtAuthenticationFilter jwtAuthenticationFilter;
@@ -25,6 +25,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(final HttpSecurity http) throws Exception {
 		http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and().authorizeRequests()
 				.anyRequest().authenticated().and()
-				.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
+				.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class).csrf().disable();
 	}
 }
