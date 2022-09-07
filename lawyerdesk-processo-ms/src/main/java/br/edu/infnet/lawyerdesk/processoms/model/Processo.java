@@ -7,6 +7,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -27,6 +31,16 @@ public class Processo {
 	@JsonIgnore
 	@OneToMany(mappedBy = "processo", cascade = CascadeType.ALL)
 	private Set<ProcessoAdvogado> advogados;
+
+	@ManyToMany
+	@JsonIgnore
+	@JoinTable(name = "LWD_ProcessoCliente", joinColumns = { @JoinColumn(name = "processo_id") }, inverseJoinColumns = {
+			@JoinColumn(name = "cliente_id") })
+	private Set<Cliente> clientes;
+
+	@JsonIgnore
+	@ManyToOne
+	private  Sistema sistema;
 
 	public String getNumero() {
 		return numero;
@@ -59,5 +73,23 @@ public class Processo {
 	public void setId(Long id) {
 		this.id = id;
 	}
+
+	public Set<Cliente> getClientes() {
+		return clientes;
+	}
+
+	public void setClientes(Set<Cliente> clientes) {
+		this.clientes = clientes;
+	}
+
+	public Sistema getSistema() {
+		return sistema;
+	}
+
+	public void setSistema(Sistema sistema) {
+		this.sistema = sistema;
+	}
+
+	 
 
 }
