@@ -5,6 +5,12 @@ public class UsuarioDTO {
 	private String login;
 	private String senha;
 
+	public UsuarioDTO(String login, String senha) {
+		super();
+		this.login = login;
+		this.senha = senha;
+	}
+
 	public String getLogin() {
 		return login;
 	}

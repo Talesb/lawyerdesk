@@ -1,12 +1,20 @@
 package br.edu.infnet.lawyerdesk.client;
 
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
+
+import org.eclipse.microprofile.rest.client.annotation.RegisterClientHeaders;
+import org.eclipse.microprofile.rest.client.inject.RegisterRestClient;
+
 import br.edu.infnet.lawyerdesk.model.dto.VincularAdvogadoAProcessoDTO;
 
-public class ProcessoMsClient {
-
-	public void vincularAdvogadoAProcesso(VincularAdvogadoAProcessoDTO dtoVinculo) {
-		// TODO Auto-generated method stub
-		
-	}
+@Path("/processo")
+@RegisterRestClient
+@RegisterClientHeaders(ProcessoMsClientHeaderFactory.class)
+public interface ProcessoMsClient {
+	 
+	@POST
+	@Path("/vincularadv")
+	public void vincularAdvogadoAProcesso(VincularAdvogadoAProcessoDTO dtoVinculo) ;
 
 }

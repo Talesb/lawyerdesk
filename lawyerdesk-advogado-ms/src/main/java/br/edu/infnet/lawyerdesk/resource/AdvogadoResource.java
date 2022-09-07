@@ -68,7 +68,8 @@ public class AdvogadoResource {
 	
 	
 	@POST
-	public void cadastrarProcesso(CadastroProcessoDTO dto) {
+	@Path("/associarprocesso")
+	public void cadastrarProcesso(CadastroProcessoDTO dto) throws Exception {
 		this.advogadoService.cadastrarProcesso(dto);
 	}
 

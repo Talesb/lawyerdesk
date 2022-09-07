@@ -10,7 +10,7 @@ public class ProcessoDTO implements Serializable {
 	private Long id;
 	private String numero;
 	private StatusProcesso status;
-	private List<Integer> idsAdvogados;
+	private List<Long> idsAdvogados;
 
 	public Long getId() {
 		return id;
@@ -36,12 +36,14 @@ public class ProcessoDTO implements Serializable {
 		this.status = status;
 	}
 
-	public List<Integer> getIdsAdvogados() {
+	public List<Long> getIdsAdvogados() {
 		return idsAdvogados;
 	}
 
-	public void setIdsAdvogados(List<Integer> idsAdvogados) {
+	public void setIdsAdvogados(List<Long> idsAdvogados) {
 		this.idsAdvogados = idsAdvogados;
 	}
+
+ 
 
 }

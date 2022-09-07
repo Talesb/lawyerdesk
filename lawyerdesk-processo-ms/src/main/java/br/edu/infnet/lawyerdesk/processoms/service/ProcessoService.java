@@ -46,7 +46,7 @@ public class ProcessoService {
 		Set<ProcessoAdvogado> advogados = new HashSet<>();
 
 		if (dto.getIdsAdvogados() != null) {
-			for (Integer idAdvogado : dto.getIdsAdvogados()) {
+			for (Long idAdvogado : dto.getIdsAdvogados()) {
 				ProcessoAdvogado processoAdvogado = new ProcessoAdvogado();
 				processoAdvogado.setAdvogadoId(idAdvogado);
 				processoAdvogado.setProcesso(processo);
@@ -68,9 +68,13 @@ public class ProcessoService {
 		return null;
 	}
 
-	public void vincularAdvogadoAProcesso(VincularAdvogadoAProcessoDTO dto) {
-		// TODO Auto-generated method stub
-
+	public void vincularAdvogadoAProcesso(VincularAdvogadoAProcessoDTO dto) throws Exception {
+		Processo processo = this.processoRepository.findByNumero(dto.getNumProcesso()).orElseThrow(()-> new Exception("Nenhum processo com o número informado foi encontrado"));
+		ProcessoAdvogado processoAdvogado = new ProcessoAdvogado();
+		processoAdvogado.setAdvogadoId(dto.getIdAdvogado());
+		processoAdvogado.setProcesso(processo);
+		processo.addAdvogadosAoProcesso(processoAdvogado);
+		this.processoRepository.save(processo);
 	}
 
 }

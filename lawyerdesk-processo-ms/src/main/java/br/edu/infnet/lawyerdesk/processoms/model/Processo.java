@@ -1,5 +1,6 @@
 package br.edu.infnet.lawyerdesk.processoms.model;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -40,7 +41,7 @@ public class Processo {
 
 	@JsonIgnore
 	@ManyToOne
-	private  Sistema sistema;
+	private Sistema sistema;
 
 	public String getNumero() {
 		return numero;
@@ -90,6 +91,12 @@ public class Processo {
 		this.sistema = sistema;
 	}
 
-	 
+	public void addAdvogadosAoProcesso(ProcessoAdvogado advogado) {
+		if (this.getAdvogados() == null) {
+			this.advogados = new HashSet<>();
+		}
+		this.advogados.add(advogado);
+
+	}
 
 }

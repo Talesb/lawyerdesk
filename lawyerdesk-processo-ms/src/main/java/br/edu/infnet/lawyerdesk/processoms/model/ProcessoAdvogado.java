@@ -17,18 +17,20 @@ public class ProcessoAdvogado {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@Column(unique=true,nullable=false)
-	private int advogadoId;
+	@Column(nullable=false)
+	private Long advogadoId;
 
 	@ManyToOne
 	@JoinColumn(name = "processoId")
 	private Processo processo;
 
-	public int getAdvogadoId() {
+	 
+
+	public Long getAdvogadoId() {
 		return advogadoId;
 	}
 
-	public void setAdvogadoId(int advogadoId) {
+	public void setAdvogadoId(Long advogadoId) {
 		this.advogadoId = advogadoId;
 	}
 

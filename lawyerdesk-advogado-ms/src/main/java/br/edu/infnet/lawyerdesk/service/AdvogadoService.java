@@ -5,6 +5,8 @@ import java.util.List;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 
+import org.eclipse.microprofile.rest.client.inject.RestClient;
+
 import br.edu.infnet.lawyerdesk.client.ProcessoMsClient;
 import br.edu.infnet.lawyerdesk.model.Advogado;
 import br.edu.infnet.lawyerdesk.model.dto.CadastroProcessoDTO;
@@ -15,8 +17,8 @@ import br.edu.infnet.lawyerdesk.repository.AdvogadoRepository;
 public class AdvogadoService {
 
 	@Inject
+	@RestClient
 	private ProcessoMsClient processoClient;
-	
 	
 	@Inject
 	private AdvogadoRepository advogadoRepository;

@@ -22,14 +22,14 @@ public class ProcessoMsLoader implements ApplicationRunner {
 
 		
 		ProcessoDTO dto = new ProcessoDTO();
-		dto.setIdsAdvogados(List.of(1));
+		dto.setIdsAdvogados(List.of(1L));
 		dto.setNumero("111");
 		dto.setStatus(StatusProcesso.INICIADO);
 		
 		this.processoService.save(dto);
 		
 		dto.setId(1L);
-		dto.setIdsAdvogados(List.of(2));
+		dto.setIdsAdvogados(List.of(2L));
 		this.processoService.save(dto);
 		
 	}

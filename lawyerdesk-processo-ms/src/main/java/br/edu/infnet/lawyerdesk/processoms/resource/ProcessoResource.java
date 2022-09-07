@@ -46,7 +46,7 @@ public class ProcessoResource {
 
 	@PostMapping("/vincularadv")
 	@PreAuthorize("hasRole('ADMIN')")
-	public void vincularAdvogado(@RequestBody VincularAdvogadoAProcessoDTO dto) {
+	public void vincularAdvogado(@RequestBody VincularAdvogadoAProcessoDTO dto) throws Exception {
 		this.processoService.vincularAdvogadoAProcesso(dto);
 	}
 
