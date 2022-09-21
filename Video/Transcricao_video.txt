@@ -1,0 +1,7 @@
+00:00 - 01:01 Mostrando os repositórios dos 3 microserviços na Azure
+01:00 - 01:18 Mostrando os pipelines e as fases de compilação
+01:26 - 02:00 Mostrando as imagens geradas dos 3 projetos ( fruto da compilação anterior)
+02:05 - 03:30 Mostrando o cluster criado na azure
+03:18 - 04:16 Mostrando o Swagger Ui da Aplicação
+04:16 - 05:00 Mostrando o monitoramento de logs interno do cluster filtrando po PODS
+05:05 - 05:15 Mostrando os 3 bancos de dados criados ( 1 por Micro serviço).
