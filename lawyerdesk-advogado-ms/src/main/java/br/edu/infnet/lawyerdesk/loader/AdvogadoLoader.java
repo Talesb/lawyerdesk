@@ -31,33 +31,33 @@ public class AdvogadoLoader {
 	private static final Logger LOGGER = Logger.getLogger("AdvogadoLoader");
 
 	void onStart(@Observes StartupEvent ev) {
-		LOGGER.info("The application is starting...");
-
-		Especialidade civel = new Especialidade();
-		civel.setDescricao("CIVEL");
-
-		Especialidade criminalista = new Especialidade();
-		criminalista.setDescricao("CRIMINAL");
-
-		especialidadeRepository.save(civel);
-		especialidadeRepository.save(criminalista);
-
-		Advogado adv1 = new Advogado();
-		adv1.setCpf("24369245893");
-		adv1.setNome("Tales Batista");
-		adv1.setOab("268598");
-		adv1.setUsuarioId(3);
-
-		adv1.setEspecialidades(Set.of(criminalista));
-
-		advogadoRepository.save(adv1);
-
-		Administrador adm1 = new Administrador();
-		adm1.setNome("Tales Batista Admin");
-		adm1.setCpf("52922098133");
-		adm1.setUsuarioId(4);
-
-		adminRepo.save(adm1);
+//		LOGGER.info("The application is starting...");
+//
+//		Especialidade civel = new Especialidade();
+//		civel.setDescricao("CIVEL");
+//
+//		Especialidade criminalista = new Especialidade();
+//		criminalista.setDescricao("CRIMINAL");
+//
+//		especialidadeRepository.save(civel);
+//		especialidadeRepository.save(criminalista);
+//
+//		Advogado adv1 = new Advogado();
+//		adv1.setCpf("24369245893");
+//		adv1.setNome("Tales Batista");
+//		adv1.setOab("268598");
+//		adv1.setUsuarioId(3);
+//
+//		adv1.setEspecialidades(Set.of(criminalista));
+//
+//		advogadoRepository.save(adv1);
+//
+//		Administrador adm1 = new Administrador();
+//		adm1.setNome("Tales Batista Admin");
+//		adm1.setCpf("52922098133");
+//		adm1.setUsuarioId(4);
+//
+//		adminRepo.save(adm1);
 
 	}
 

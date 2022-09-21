@@ -28,20 +28,28 @@ public class EnderecoService {
 		this.enderecoRepository.save(endereco);
 	}
 
-	public void save(EnderecoDTO dto) {
+	public Endereco save(EnderecoDTO dto) {
 
 		Endereco endereco = new Endereco();
-
-		if (dto.getId() != null) {
-			endereco = this.getById(dto.getId()).orElse(new Endereco());
-		}
-
 		endereco.setCep(dto.getCep());
 		endereco.setNumero(dto.getNumero());
 		endereco.setRua(dto.getRua());
 
-		this.enderecoRepository.save(endereco);
+		return this.enderecoRepository.save(endereco);
 	}
+	
+	public Endereco update(EnderecoDTO dto) throws Exception {
+
+		Endereco endereco = this.getById(dto.getId()).orElseThrow(()->{
+			return new Exception("Nenhum endereco encontrado com o id informado");
+		});
+		endereco.setCep(dto.getCep());
+		endereco.setNumero(dto.getNumero());
+		endereco.setRua(dto.getRua());
+
+		return this.enderecoRepository.save(endereco);
+	}
+	
 
 	public void delete(Long id) {
 		this.enderecoRepository.deleteById(id);

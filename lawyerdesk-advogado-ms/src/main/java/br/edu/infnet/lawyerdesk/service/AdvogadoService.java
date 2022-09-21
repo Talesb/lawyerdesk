@@ -10,6 +10,8 @@ import org.eclipse.microprofile.rest.client.inject.RestClient;
 import br.edu.infnet.lawyerdesk.client.ProcessoMsClient;
 import br.edu.infnet.lawyerdesk.model.Advogado;
 import br.edu.infnet.lawyerdesk.model.dto.CadastroProcessoDTO;
+import br.edu.infnet.lawyerdesk.model.dto.ClienteDTO;
+import br.edu.infnet.lawyerdesk.model.dto.ProcessoDTO;
 import br.edu.infnet.lawyerdesk.model.dto.VincularAdvogadoAProcessoDTO;
 import br.edu.infnet.lawyerdesk.repository.AdvogadoRepository;
 
@@ -60,6 +62,14 @@ public class AdvogadoService {
 		 
 		this.processoClient.vincularAdvogadoAProcesso(dtoVinculo);
 
+	}
+
+	public List<ProcessoDTO> findProcessoByAdvId(Long id) {
+		return this.processoClient.findProcessoByAdvId(id);
+	}
+
+	public List<ClienteDTO> findClientesByAdvId(Long id) {
+		return this.processoClient.findClientesByAdvId(id);
 	}
 
 }

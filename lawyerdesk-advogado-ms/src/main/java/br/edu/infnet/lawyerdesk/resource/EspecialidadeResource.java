@@ -23,25 +23,24 @@ import br.edu.infnet.lawyerdesk.service.EspecialidadeService;
 @Path("/especialidade")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
+@RolesAllowed({"ADMIN","ADV"})
 public class EspecialidadeResource {
 
 	@Inject
 	private EspecialidadeService espacialidadeService;
 
-	@RolesAllowed({"ADMIN","ADV"})
+	
 	@GET
 	public List<Especialidade> findAll() {
 		return this.espacialidadeService.findAll();
 	}
 
-	@RolesAllowed("ADMIN" )
 	@POST
 	public Response create(Especialidade especialidade) {
 		this.espacialidadeService.persist(especialidade);
 		return Response.ok(especialidade).status(201).build();
 	}
 
-	@RolesAllowed("ADMIN" )
 	@DELETE
 	@Path("{id}")
 	public Response delete(@PathParam("id") Long id) {

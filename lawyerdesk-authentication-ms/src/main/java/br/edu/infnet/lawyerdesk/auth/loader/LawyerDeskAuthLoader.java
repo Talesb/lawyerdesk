@@ -29,28 +29,28 @@ public class LawyerDeskAuthLoader {
 	@Transactional
 	void onStart(@Observes StartupEvent ev) {
 	
-	Usuario usuario = new Usuario();
-	usuario.setLogin("talesb_adv");
-	usuario.setSenha("1234");
-	
-	Usuario usuarioAdmin = new Usuario();
-	usuarioAdmin.setLogin("talesb_adv_admin");
-	usuarioAdmin.setSenha("12345");
-	
-	Role adv = new Role();
-	adv.setDescricao("ADV");
-
-	Role fullAccessAdmin = new Role();
-	fullAccessAdmin.setDescricao("ADMIN");
-	
-	roleService.persist(fullAccessAdmin);
-	roleService.persist(adv);
-	
-	usuarioAdmin.setRoles(Set.of(fullAccessAdmin));
-	usuario.setRoles(Set.of(adv));
-	
-	usuarioService.persist(usuarioAdmin);
-	usuarioService.persist(usuario);
+//	Usuario usuario = new Usuario();
+//	usuario.setLogin("talesb_adv");
+//	usuario.setSenha("1234");
+//	
+//	Usuario usuarioAdmin = new Usuario();
+//	usuarioAdmin.setLogin("talesb_adv_admin");
+//	usuarioAdmin.setSenha("12345");
+//	
+//	Role adv = new Role();
+//	adv.setDescricao("ADV");
+//
+//	Role fullAccessAdmin = new Role();
+//	fullAccessAdmin.setDescricao("ADMIN");
+//	
+//	roleService.persist(fullAccessAdmin);
+//	roleService.persist(adv);
+//	
+//	usuarioAdmin.setRoles(Set.of(fullAccessAdmin));
+//	usuario.setRoles(Set.of(adv));
+//	
+//	usuarioService.persist(usuarioAdmin);
+//	usuarioService.persist(usuario);
 	
 	}
 }

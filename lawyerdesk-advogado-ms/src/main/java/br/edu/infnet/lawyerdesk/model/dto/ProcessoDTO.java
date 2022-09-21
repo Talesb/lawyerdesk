@@ -1,9 +1,7 @@
-package br.edu.infnet.lawyerdesk.processoms.dto;
+package br.edu.infnet.lawyerdesk.model.dto;
 
 import java.io.Serializable;
 import java.util.List;
-
-import br.edu.infnet.lawyerdesk.processoms.model.StatusProcesso;
 
 public class ProcessoDTO implements Serializable {
 
@@ -61,7 +59,6 @@ public class ProcessoDTO implements Serializable {
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
-	
 	
 	
 	

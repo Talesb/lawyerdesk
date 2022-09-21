@@ -11,6 +11,7 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
 import org.eclipse.microprofile.config.inject.ConfigProperty;
+import org.jboss.logging.Logger;
 
 import br.edu.infnet.lawyerdesk.auth.model.Usuario;
 import br.edu.infnet.lawyerdesk.auth.model.dto.ResponseDTO;
@@ -23,6 +24,8 @@ public class AuthResource {
 
 	@Inject
 	PasswordEncoder passwordEncoder;
+	
+	private static final Logger LOG = Logger.getLogger(AuthResource.class);
  
 
 	@ConfigProperty(name = "br.edu.infnet.lawyerdesk.jwt.duration") public Long duration;
@@ -37,6 +40,7 @@ public class AuthResource {
 		
 		if (u != null && u.getSenha().equals(passwordEncoder.encode(dto.getSenha()))) {
 			try {
+				LOG.info("Login efetuado com sucesso!");
 				return Response.ok(new ResponseDTO(TokenUtils.generateToken(u.getLogin(), u.getRoles(), duration, issuer))).build();
 			} catch (Exception e) {
 				return Response.status(Status.UNAUTHORIZED).build();

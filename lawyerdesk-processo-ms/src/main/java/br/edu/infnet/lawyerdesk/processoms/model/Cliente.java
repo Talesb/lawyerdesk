@@ -13,6 +13,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import br.edu.infnet.lawyerdesk.processoms.dto.ClienteDTO;
+
 @Entity
 @Table(name = "LWD_Cliente")
 public class Cliente {
@@ -29,8 +31,8 @@ public class Cliente {
 
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "endereco_id", referencedColumnName = "id")
-	private   Endereco  endereco;
-	
+	private Endereco endereco;
+
 	@ManyToMany(mappedBy = "clientes")
 	private Set<Processo> processos;
 
@@ -66,7 +68,6 @@ public class Cliente {
 		this.telefone = telefone;
 	}
 
-	 
 	public Endereco getEndereco() {
 		return endereco;
 	}
@@ -83,6 +84,13 @@ public class Cliente {
 		this.processos = processos;
 	}
 
-	
-	
+	public ClienteDTO toDTO() {
+		ClienteDTO dto = new ClienteDTO();
+		dto.setCpf(this.cpf);
+		dto.setId(this.id);
+		dto.setNome(this.nome);
+		dto.setTelefone(this.telefone);
+		return dto;
+	}
+
 }

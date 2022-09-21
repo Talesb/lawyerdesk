@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,33 +28,42 @@ public class ClienteResource {
 	private ClienteService clienteService;
 
 	@GetMapping
-	@PreAuthorize("hasRole('ADMIN')")
+	@PreAuthorize("hasAnyRole('ADMIN','ADV')")
 	public List<Cliente> getAll() {
 		return this.clienteService.getAll();
 	}
 
 	@GetMapping("/{id}")
-	@PreAuthorize("hasRole('ADMIN')")
+	@PreAuthorize("hasAnyRole('ADMIN','ADV')")
 	public Optional<Cliente> getById(@PathVariable Long id) {
 		return this.clienteService.getById(id);
 	}
 
 	@PostMapping
-	@PreAuthorize("hasRole('ADMIN')")
-	public void save(@RequestBody ClienteDTO dto) {
-		this.clienteService.save(dto);
+	@PreAuthorize("hasAnyRole('ADMIN','ADV')")
+	public ResponseEntity<Cliente> save(@RequestBody ClienteDTO dto) {
+		Cliente saved = this.clienteService.save(dto);
+		return ResponseEntity.status(HttpStatus.CREATED).body(saved);
 	}
 
 	@PutMapping
-	@PreAuthorize("hasRole('ADMIN')")
-	public void update(@RequestBody ClienteDTO dto) {
-		this.clienteService.save(dto);
+	@PreAuthorize("hasAnyRole('ADMIN','ADV')")
+	public void update(@RequestBody ClienteDTO dto) throws Exception {
+		this.clienteService.update(dto);
 	}
 
 	@DeleteMapping("/{id}")
-	@PreAuthorize("hasRole('ADMIN')")
-	public void deleteById(@PathVariable Long id) {
+	@PreAuthorize("hasAnyRole('ADMIN','ADV')")
+	public ResponseEntity<Object> deleteById(@PathVariable Long id) {
 		this.clienteService.delete(id);
+		return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
 	}
+	
+	@GetMapping("/advogado/{advogadoid}")
+	@PreAuthorize("hasAnyRole('ADMIN','ADV')")
+	public List<ClienteDTO> getByIdAdvogado(@PathVariable Long advogadoid) {
+		return this.clienteService.getByIdAdvogado(advogadoid);
+	}
+
 
 }

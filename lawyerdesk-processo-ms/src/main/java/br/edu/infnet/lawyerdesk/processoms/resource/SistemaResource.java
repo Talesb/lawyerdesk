@@ -26,31 +26,31 @@ public class SistemaResource {
 	private SistemaService sistemaService;
 
 	@GetMapping
-	@PreAuthorize("hasRole('ADMIN')")
+	@PreAuthorize("hasAnyRole('ADMIN','ADV')")
 	public List<Sistema> getAll() {
 		return this.sistemaService.getAll();
 	}
 
 	@GetMapping("/{id}")
-	@PreAuthorize("hasRole('ADMIN')")
+	@PreAuthorize("hasAnyRole('ADMIN','ADV')")
 	public Optional<Sistema> getById(@PathVariable Long id) {
 		return this.sistemaService.getById(id);
 	}
 
 	@PostMapping
-	@PreAuthorize("hasRole('ADMIN')")
+	@PreAuthorize("hasAnyRole('ADMIN','ADV')")
 	public void save(@RequestBody SistemaDTO dto) {
 		this.sistemaService.save(dto);
 	}
 
 	@PutMapping
-	@PreAuthorize("hasRole('ADMIN')")
+	@PreAuthorize("hasAnyRole('ADMIN','ADV')")
 	public void update(@RequestBody SistemaDTO dto) {
 		this.sistemaService.save(dto);
 	}
 
 	@DeleteMapping("/{id}")
-	@PreAuthorize("hasRole('ADMIN')")
+	@PreAuthorize("hasAnyRole('ADMIN','ADV')")
 	public void deleteById(@PathVariable Long id) {
 		this.sistemaService.delete(id);
 	}

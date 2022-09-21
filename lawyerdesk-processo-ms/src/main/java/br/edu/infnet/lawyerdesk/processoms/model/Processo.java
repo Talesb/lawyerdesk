@@ -2,6 +2,7 @@ package br.edu.infnet.lawyerdesk.processoms.model;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -17,6 +18,8 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import br.edu.infnet.lawyerdesk.processoms.dto.ProcessoDTO;
+
 @Entity
 @Table(name = "LWD_Processo")
 public class Processo {
@@ -27,6 +30,8 @@ public class Processo {
 
 	private String numero;
 
+	private String descricao;
+	
 	private StatusProcesso status;
 
 	@JsonIgnore
@@ -98,5 +103,36 @@ public class Processo {
 		this.advogados.add(advogado);
 
 	}
+	
+	
+	public ProcessoDTO toDTO() {
+		
+		
+		ProcessoDTO dto = new ProcessoDTO();
+		dto.setId(this.id);
+		dto.setNumero(this.numero);
+		dto.setStatus(this.status);
+		dto.setDescricao(this.descricao);
+		
+		if(this.advogados!=null) {
+			dto.setIdsAdvogados(this.advogados.stream().map(adv->adv.getAdvogadoId()).collect(Collectors.toList()));
+		}
+		
+		if(this.clientes!=null) {
+			dto.setIdsClientes(this.clientes.stream().map(cli->cli.getId()).collect(Collectors.toList()));
+		}
+		
+		return dto;
+	}
+
+	public String getDescricao() {
+		return descricao;
+	}
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+	
+	
 
 }
