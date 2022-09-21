@@ -1,0 +1,1128 @@
+{
+	"info": {
+		"_postman_id": "5bb89d07-3e1b-4257-a904-cce30015f795",
+		"name": "LawyerDesk",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "advogado-ms",
+			"item": [
+				{
+					"name": "advogado",
+					"item": [
+						{
+							"name": "Get All",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{cluster-advogado}}/advogado",
+									"host": [
+										"{{cluster-advogado}}"
+									],
+									"path": [
+										"advogado"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "New",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n        \"nome\": \"Giorgia Nascimento\",\n        \"cpf\": \"34376175595\",\n        \"oab\": \"268599\",\n        \"usuarioId\": 83,\n        \"especialidades\": [\n            {\n                \"id\": 1\n            }\n        ]\n    }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{cluster-advogado}}/advogado",
+									"host": [
+										"{{cluster-advogado}}"
+									],
+									"path": [
+										"advogado"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n        \"nome\": \"Giorgia Nascimento\",\r\n        \"cpf\": \"34376175595\",\r\n        \"oab\": \"268599\",\r\n        \"usuarioId\": 83,\r\n        \"especialidades\": [\r\n            {\r\n                \"id\": 1\r\n            },\r\n            {\r\n                \"id\": 2\r\n            }\r\n        ]\r\n    }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{cluster-advogado}}/advogado/10",
+									"host": [
+										"{{cluster-advogado}}"
+									],
+									"path": [
+										"advogado",
+										"10"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{cluster-advogado}}/advogado/11",
+									"host": [
+										"{{cluster-advogado}}"
+									],
+									"path": [
+										"advogado",
+										"11"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Associar Processo",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"oab\": \"268598\",\n    \"numeroProcesso\": \"23444423\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{cluster-advogado}}/associarprocesso",
+									"host": [
+										"{{cluster-advogado}}"
+									],
+									"path": [
+										"associarprocesso"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Todos os Processos do Advogado",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{cluster-advogado}}/advogado/processo/10",
+									"host": [
+										"{{cluster-advogado}}"
+									],
+									"path": [
+										"advogado",
+										"processo",
+										"10"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Todos os Clientes do Advogado",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{cluster-advogado}}/advogado/cliente/10",
+									"host": [
+										"{{cluster-advogado}}"
+									],
+									"path": [
+										"advogado",
+										"cliente",
+										"10"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "especialidade",
+					"item": [
+						{
+							"name": "Delete",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{cluster-advogado}}/especialidade/21",
+									"host": [
+										"{{cluster-advogado}}"
+									],
+									"path": [
+										"especialidade",
+										"21"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get All",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{cluster-advogado}}/especialidade",
+									"host": [
+										"{{cluster-advogado}}"
+									],
+									"path": [
+										"especialidade"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "New",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n     \"descricao\": \"DIREITO MILITAR\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{cluster-advogado}}/especialidade",
+									"host": [
+										"{{cluster-advogado}}"
+									],
+									"path": [
+										"especialidade"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "administrador",
+					"item": [
+						{
+							"name": "Get All",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{cluster-advogado}}/administrador",
+									"host": [
+										"{{cluster-advogado}}"
+									],
+									"path": [
+										"administrador"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{cluster-advogado}}/administrador/11",
+									"host": [
+										"{{cluster-advogado}}"
+									],
+									"path": [
+										"administrador",
+										"11"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "New",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"nome\":\"Leonardo Gloria 2\",\r\n    \"cpf\":\"72860574646 2\",\r\n    \"usuarioId\":84\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{cluster-advogado}}/administrador",
+									"host": [
+										"{{cluster-advogado}}"
+									],
+									"path": [
+										"administrador"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"nome\":\"Leonardo Gloria 2\",\r\n    \"cpf\":\"72860574646 3\",\r\n    \"usuarioId\":84\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{cluster-advogado}}/administrador/11",
+									"host": [
+										"{{cluster-advogado}}"
+									],
+									"path": [
+										"administrador",
+										"11"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "auth-ms",
+			"item": [
+				{
+					"name": "usuario",
+					"item": [
+						{
+							"name": "New",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"login\":\"leo.gloria\",\r\n    \"senha\":\"123456\",\r\n    \"roles\":[\r\n        {\"id\":1},\r\n        {\"id\":2}\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{cluster-auth}}/usuario",
+									"host": [
+										"{{cluster-auth}}"
+									],
+									"path": [
+										"usuario"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get All",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{cluster-auth}}/usuario",
+									"host": [
+										"{{cluster-auth}}"
+									],
+									"path": [
+										"usuario"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"login\": \"talesb_adv_4\",\n    \"senha\": \"123454\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{usuario-path}}/4",
+									"host": [
+										"{{usuario-path}}"
+									],
+									"path": [
+										"4"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{cluster-auth}}/usuario/82",
+									"host": [
+										"{{cluster-auth}}"
+									],
+									"path": [
+										"usuario",
+										"82"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "role",
+					"item": [
+						{
+							"name": "New",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{role-path}}",
+									"host": [
+										"{{role-path}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get All",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{role-path}}",
+									"host": [
+										"{{role-path}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "{{role-path}}",
+									"host": [
+										"{{role-path}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{role-path}}",
+									"host": [
+										"{{role-path}}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"console.log('....... RESPONSE BODY ') ",
+									"var jsonData = pm.response.json();",
+									" console.log(jsonData) ",
+									" var token_value = jsonData.message; ",
+									" console.log(token_value) ",
+									" pm.environment.set(\"token\", token_value);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"login\":\"talesb_adv_admin\",\n    \"senha\":\"12345\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{cluster-auth}}/auth/login",
+							"host": [
+								"{{cluster-auth}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "processo-ms",
+			"item": [
+				{
+					"name": "processo",
+					"item": [
+						{
+							"name": "Todos Processos",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{cluster-processo}}/processo",
+									"host": [
+										"{{cluster-processo}}"
+									],
+									"path": [
+										"processo"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Novo Processo",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"numero\": \"123475\",\n    \"status\": \"EMANDAMENTO\",\n    \"descricao\":\"Violência doméstica Jessica e Rhuan\",\n    \"idsAdvogados\":[\n        10,1\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{cluster-processo}}/processo",
+									"host": [
+										"{{cluster-processo}}"
+									],
+									"path": [
+										"processo"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Processo",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{cluster-processo}}/processo/6",
+									"host": [
+										"{{cluster-processo}}"
+									],
+									"path": [
+										"processo",
+										"6"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Processo",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"numero\": \"123461\",\r\n    \"status\": \"FINALIZADO\",\r\n    \"idsClientes\":[\r\n        6\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{cluster-processo}}/processo/10",
+									"host": [
+										"{{cluster-processo}}"
+									],
+									"path": [
+										"processo",
+										"10"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Vincular Advogado a Processo",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "localhost:8082/processo",
+									"host": [
+										"localhost"
+									],
+									"port": "8082",
+									"path": [
+										"processo"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Obter Processo por id",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{cluster-processo}}/processo/5",
+									"host": [
+										"{{cluster-processo}}"
+									],
+									"path": [
+										"processo",
+										"5"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Obter por AdvogadoId",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{cluster-processo}}/processo/advogado/10",
+									"host": [
+										"{{cluster-processo}}"
+									],
+									"path": [
+										"processo",
+										"advogado",
+										"10"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "cliente",
+					"item": [
+						{
+							"name": "Novo Cliente",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"nome\": \"Ana Maitê Natália dos Santos\",\n    \"cpf\": \"79854572242\",\n    \"telefone\": \"19988245090\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{cluster-processo}}/cliente",
+									"host": [
+										"{{cluster-processo}}"
+									],
+									"path": [
+										"cliente"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Cliente",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{cluster-processo}}/cliente/3",
+									"host": [
+										"{{cluster-processo}}"
+									],
+									"path": [
+										"cliente",
+										"3"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Todos Clientes",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{cluster-processo}}/cliente",
+									"host": [
+										"{{cluster-processo}}"
+									],
+									"path": [
+										"cliente"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Cliente",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"numero\": \"123457\",\r\n    \"status\": \"EMANDAMENTO\",\r\n    \"idsAdvogados\":[\r\n        10\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{cluster-processo}}/cliente/6",
+									"host": [
+										"{{cluster-processo}}"
+									],
+									"path": [
+										"cliente",
+										"6"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Obter por AdvogadoId",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{cluster-processo}}/cliente/advogado/10",
+									"host": [
+										"{{cluster-processo}}"
+									],
+									"path": [
+										"cliente",
+										"advogado",
+										"10"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}

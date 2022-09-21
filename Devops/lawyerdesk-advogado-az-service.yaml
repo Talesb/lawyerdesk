@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: lawyerdesk-advogado
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: lawyerdesk-advogado
+  template:
+    metadata:
+      labels:
+        app: lawyerdesk-advogado
+    spec:
+      nodeSelector:
+        "kubernetes.io/os": linux
+      containers:
+      - name: lawyerdesk-advogado-container
+        image: lawyerdeskacr.azurecr.io/lawyerdeskacr-advogado-repo:40
+        ports:
+        - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: lawyerdesk-advogado
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 8080
+  selector:
+    app: lawyerdesk-advogado

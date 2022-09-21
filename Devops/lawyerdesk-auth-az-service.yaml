@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: lawyerdesk-auth
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: lawyerdesk-auth
+  template:
+    metadata:
+      labels:
+        app: lawyerdesk-auth
+    spec:
+      nodeSelector:
+        "kubernetes.io/os": linux
+      containers:
+      - name: lawyerdesk-auth-container
+        image: lawyerdeskacr.azurecr.io/lawyerdeskacr-repo:38
+        ports:
+        - containerPort: 8180
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: lawyerdesk-auth
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 8180
+  selector:
+    app: lawyerdesk-auth
